@@ -1,38 +1,88 @@
-Role Name
-=========
+paulrentschler.logwatch
+=======================
 
-A brief description of the role goes here.
+Installation and configuration of LogWatch on Ubuntu Linux.
+
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+None.
+
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+The following variables are available with defaults defined in `defaults/main.yml`:
+
+Set the email address that LogWatch sends the reports to.
+
+    logwatch_mail_to: "root@localhost"
+
+Set the email address for the "From" header in the email that LogWatch sends.
+
+    logwatch_mail_from: '"LogWatch ({{ inventory_hostname }})" <root@localhost>'
+
+Set the group that should get permissions on configuration files.
+
+    logwatch_admin_group: root
+
+Set the level of detail in the Logwatch report. This can either the name or number where the options are:
+
+* Low = 0
+* Med = 5
+* High = 10
+
+    logwatch_detail: "Med"
+
+The default time range for the Logwatch report.
+
+    logwatch_range: "yesterday"
+
+The output method of the Logwatch report.
+
+    logwatch_output: "stdout"
+
+The format of the Logwatch report.
+
+    logwatch_format: "text"
+
+The cron special time specification nickname - must match with logwatch range!
+
+    logwatch_cron_time: "daily"
+
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+None.
+
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+Simple version:
 
-    - hosts: servers
+    - hosts: all
       roles:
-         - { role: username.rolename, x: 42 }
+        - paulrentschler.logwatch
+
+Additional customizations:
+
+    - hosts: all
+      roles:
+        - { role: paulrentschler.logwatch,
+            logwatch_mail_to: "root@localhost, admin@example.net",
+            logwatch_detail: "High",
+            }
+
 
 License
 -------
 
-BSD
+MIT
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Created by Paul Rentschler in 2021.

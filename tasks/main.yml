@@ -1,2 +1,37 @@
 ---
-# tasks file for logwatch
+# Tasks for installing and configuring LogWatch
+
+
+- name: install LogWatch
+  ansible.builtin.package:
+    name: logwatch
+    state: present
+    update_cache: yes
+  become: yes
+
+- name: configure LogWatch
+  ansible.builtin.template:
+    src: logwatch.conf.j2
+    dest: /etc/logwatch/conf/logwatch.conf
+    owner: root
+    group: "{{ logwatch_admin_group }}"
+    mode: 0664
+  become: yes
+
+
+# Schedule LogWatch to run
+
+# - name: remove improperly named cron script
+#   ansible.builtin.file:
+#     path: /etc/cron.daily/0logwatch
+#     state: absent
+#   become: yes
+
+# - name: schedule the cron job
+#   ansible.builtin.template:
+#     src: 00logwatch.j2
+#     dest: /etc/cron.daily/00logwatch
+#     owner: root
+#     group: "{{ logwatch_admin_group }}"
+#     mode: 0775
+#   become: yes

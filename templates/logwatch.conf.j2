@@ -1,0 +1,15 @@
+#
+# {{ ansible_managed }}
+#
+# WARNING: This file is under Ansible control for {{ inventory_hostname }}
+# DO NOT MODIFY by hand as changes will get lost
+#
+# Defaults are here: /usr/share/logwatch/default.conf/logwatch.conf
+#
+
+MailTo = {{ logwatch_mail_to }}
+MailFrom = {{ logwatch_mail_from }}
+Detail = {{ logwatch_detail }}
+Range = {{ logwatch_range }}
+Output = {{ logwatch_output }}
+Format = {{ logwatch_format }}
