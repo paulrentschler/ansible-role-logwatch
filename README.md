@@ -1,6 +1,8 @@
 paulrentschler.logwatch
 =======================
 
+[![MIT licensed][mit-badge]][mit-link]
+
 Installation and configuration of LogWatch on Ubuntu Linux.
 
 
@@ -80,9 +82,14 @@ Additional customizations:
 License
 -------
 
-MIT
+[MIT][mit-link]
+
 
 Author Information
 ------------------
 
 Created by Paul Rentschler in 2021.
+
+
+[mit-badge]: https://img.shields.io/badge/license-MIT-blue.svg
+[mit-link]: https://github.com/paulrentschler/ansible-role-logwatch/blob/master/LICENSE
