@@ -35,7 +35,7 @@ Set the level of detail in the Logwatch report. This can either the name or numb
 * Med = 5
 * High = 10
 
-    logwatch_detail: "Med"
+        logwatch_detail: "Med"
 
 The default time range for the Logwatch report.
 
