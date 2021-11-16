@@ -53,6 +53,10 @@ The cron special time specification nickname - must match with logwatch range!
 
     logwatch_cron_time: "daily"
 
+For Debian-based systems that use the Apt package manager, a check for packages that need to be updated can be performed and included in the daily report which is on by default.
+
+    logwatch_updates_check: yes
+
 
 Dependencies
 ------------

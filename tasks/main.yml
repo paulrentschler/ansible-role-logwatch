@@ -35,3 +35,26 @@
 #     group: "{{ logwatch_admin_group }}"
 #     mode: 0775
 #   become: yes
+
+
+# Add/configure Apt package update checks
+
+- name: add Apt packages to update check
+  ansible.builtin.copy:
+    src: updates
+    dest: /usr/share/logwatch/scripts/services/updates
+    owner: root
+    group: root
+    mode: 0755
+  become: yes
+  when: "ansible_os_family == 'Debian' and logwatch_updates_check|bool"
+
+- name: configure Apt packages to update check
+  ansible.builtin.template:
+    src: updates.conf.j2
+    dest: /etc/logwatch/conf/services/updates.conf
+    owner: root
+    group: root
+    mode: 0644
+  become: yes
+  when: "ansible_os_family == 'Debian' and logwatch_updates_check|bool"

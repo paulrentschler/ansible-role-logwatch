@@ -30,3 +30,8 @@ logwatch_format: "text"
 
 # cron special time specification nickname - must match with logwatch range!
 logwatch_cron_time: "daily"
+
+
+# check for package updates on Debian systems
+logwatch_updates_check: yes
+
