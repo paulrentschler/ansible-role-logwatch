@@ -17,6 +17,8 @@
     group: "{{ logwatch_admin_group }}"
     mode: 0664
   become: yes
+  tags:
+    - logwatch_config
 
 
 # Schedule LogWatch to run
@@ -48,6 +50,8 @@
     mode: 0755
   become: yes
   when: "ansible_os_family == 'Debian' and logwatch_updates_check|bool"
+  tags:
+    - logwatch_config
 
 - name: configure Apt packages to update check
   ansible.builtin.template:
@@ -58,3 +62,5 @@
     mode: 0644
   become: yes
   when: "ansible_os_family == 'Debian' and logwatch_updates_check|bool"
+  tags:
+    - logwatch_config
